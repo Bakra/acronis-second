@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  </head>
+  <body>
+
+    <div id="asc">Ascending </div>
+    <div id="desc">Descending </div>
+
+    <script>
+
+      var arr = [{date: '10.01.2017'}, {date: '21.13.2002'}, {date: '05.11.2016'}];
+      function dateToNum(d) {
+        // Convert date "26.06.2016" to 20160626
+        d = d.date.split("."); 
+        return Number(d[2]+d[1]+d[0]);
+      }
+      arr.sort(function(a,b){
+        return dateToNum(a) - dateToNum(b);
+      });
+
+      for (var i = arr.length - 1; i >= 0; i--) {
+        document.getElementById('desc').innerHTML += arr[i].date + ' '
+      }
+
+      arr.sort(function(a,b){
+        return dateToNum(b) - dateToNum(a);
+      });
+
+      for (var i = arr.length - 1; i >= 0; i--) {
+        document.getElementById('asc').innerHTML += arr[i].date + ' '
+      }
+    </script>
+  </body>
+</html>
